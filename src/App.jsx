@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import Menu from "./pages/menu";
 import About from "./pages/about";
 import Carti from "./pages/cart";
+import NotFound from "./components/NotFound";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -25,14 +26,16 @@ const handleClic = (item) => {
   return (
     <Router  >
       <Routes>
-        <Route path="/menu" element={<Menu cart={cart} handleClic={handleClic} />} />
         <Route
           path="/"
           element={<Home cart={cart} handleClic={handleClic} />}
         />
+        <Route path="/menu" element={<Menu cart={cart} handleClic={handleClic} />} />
         <Route path="/about" element={<About cart={cart} />} />
         <Route path="/cart" element={<Carti cart={cart} setCart={setCart} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+
     </Router>
   );
 }
